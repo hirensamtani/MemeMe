@@ -115,9 +115,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func generateMemedImage() -> UIImage {
         
-        topToolBar.isHidden = true
-        bottomToolBar.isHidden = true
-        
+        hideToolbars(true)
         
         
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -125,11 +123,17 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        topToolBar.isHidden = false
-        bottomToolBar.isHidden = false
+        hideToolbars(false)
         
         return memedImage
     }
+    
+    func hideToolbars(_ visible: Bool){
+        topToolBar.isHidden = visible
+        bottomToolBar.isHidden = visible
+    }
+    
+    
     
     @IBAction func cancelEdit(_ sender: Any) {
         let alert = UIAlertController(title: "Do you really want to cancel editing?", message: nil, preferredStyle: .alert)
