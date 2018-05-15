@@ -107,7 +107,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         meme.imageOriginal = imagePickerView.image!
         meme.imageMemed = image
         
-        
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
         
     }
     
